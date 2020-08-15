@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qoute Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div>
+    <h1>Qoute Generator</h1>
+    <p id="result">
+
+    </p>
+    <input type="number" id="qty" placeholder="Select Number">
+    <button id="generate">Generate random</button>
+    <button id="qouteOne">Generate animals</button>
+    <button id="qouteTwo">Generate veggies</button>
+    <button id="exit">Exit</button>
+  </div>
+
+    
+    <script>
+        let wordOne = ['i','you','they','we']
+        let wordTwo = ['like','hate','dislike','love']
+        let wordThree = ['apple','cake','banana','durian']
+        let animals = ['cat','giraffe','dragon','dog','bird']
+        let vegies = ['cucumber','brocolli','cabbage','tomato','corn']
+
+const getResult = (listOne,listTwo,listThree,times) =>{
+  document.getElementById('result').innerHTML = ""
+  for(i=0;i<times;i++){
+    let generate = ` ${listOne[Math.floor(Math.random() * listOne.length)]} ${listTwo[Math.floor(Math.random() * listTwo.length)]} ${listThree[Math.floor(Math.random() * listThree.length)]} `
+    document.getElementById('result').innerHTML += generate + "<br />"
+    console.log(generate)
+  }
+}
+document.getElementById('generate').addEventListener("click", function(){
+  let qty = document.getElementById('qty').value
+  getResult(wordOne,wordTwo,wordThree,qty)
+});
+document.getElementById('qouteOne').addEventListener("click", function(){
+  let qty = document.getElementById('qty').value
+  getResult(wordOne,wordTwo,animals,qty)
+});
+document.getElementById('qouteTwo').addEventListener("click", function(){
+  let qty = document.getElementById('qty').value
+  getResult(wordOne,wordTwo,vegies,qty)
+});
+document.getElementById('exit').addEventListener("click", function(){
+  document.getElementById('result').innerHTML = ""
+  console.clear();
+  console.log("Exit from the program, Thank you")
+});
+    </script>
+</body>
+</html>
